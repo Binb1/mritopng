@@ -3,7 +3,7 @@ to be included in the `scripts` folder of the python install
 """
 import argparse
 
-from . import convert_folder, convert_file
+from mritopng.__init__ import convert_folder, convert_file
 
 
 def main():
@@ -13,12 +13,19 @@ def main():
     parser.add_argument('dicom_path', help='Full path to the mri file')
     parser.add_argument('png_path', help='Full path to the generated png file')
 
+    dicom_path = './tests/data/envoyai/dicom/'
+    png_path = './tests/data/envoyai/png2'
+
+    convert_folder(dicom_path, png_path, False)
+
+    '''
     args = parser.parse_args()
     print('Arguments: %s', args)
     if args.folder:
         convert_folder(args.dicom_path, args.png_path, args.auto_contrast)
     else:
         convert_file(args.dicom_path, args.png_path, args.auto_contrast)
+    '''
 
 if __name__ == '__main__':
     main()
